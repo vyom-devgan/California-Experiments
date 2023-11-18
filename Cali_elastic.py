@@ -72,10 +72,10 @@ if __name__ == "__main__":
         mlflow.log_metric("mae", mae)
 
         # For remote server only (aws)
-        remote_server_uri = "http://ec2-54-226-233-178.compute-1.amazonaws.com:5000/"
+        remote_server_uri = "https://dagshub.com/vyom-devgan/California-Experiments.mlflow"
         mlflow.set_tracking_uri(remote_server_uri)
 
-        tracking_url_type_store = urlparse(mlflow.get_tracking_uri()).scheme
+        tracking_url_type_store = urlparse(mlflow.get_tracking_uri())
 
         # Model registry does not work with file store
         if tracking_url_type_store != "file":
