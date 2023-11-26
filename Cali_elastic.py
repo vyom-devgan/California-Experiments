@@ -39,6 +39,7 @@ if __name__ == "__main__":
         data = pd.read_csv(csv_url, sep=",")
         le = LabelEncoder()
         data['ocean_proximity'] = le.fit_transform(data['ocean_proximity'])
+        data = data.dropna()
     except Exception as e:
         logger.exception(
             "Unable to download training & test CSV, check your internet connection. Error: %s", e
