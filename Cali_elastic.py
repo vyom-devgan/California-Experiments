@@ -8,6 +8,7 @@ import pandas as pd
 from sklearn.linear_model import ElasticNet
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import LabelEncoder
 
 import mlflow
 import mlflow.sklearn # https://mlflow.org/docs/latest/python_api/index.html
@@ -36,6 +37,8 @@ if __name__ == "__main__":
     )
     try:
         data = pd.read_csv(csv_url, sep=",")
+        le = LabelEncoder()
+        data['ocean_proximity'] = le.fit_transform(data['ocean_proximity'])
     except Exception as e:
         logger.exception(
             "Unable to download training & test CSV, check your internet connection. Error: %s", e
