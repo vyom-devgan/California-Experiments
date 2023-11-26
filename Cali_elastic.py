@@ -35,7 +35,7 @@ if __name__ == "__main__":
         "https://raw.githubusercontent.com/vyom-devgan/California-Experiments/main/housing_data.csv"
     )
     try:
-        data = pd.read_csv(csv_url, sep=";")
+        data = pd.read_csv(csv_url, sep=",")
     except Exception as e:
         logger.exception(
             "Unable to download training & test CSV, check your internet connection. Error: %s", e
